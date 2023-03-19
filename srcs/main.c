@@ -1,5 +1,11 @@
 #include "so_long.h"
 
+
+int main()
+{
+	
+}
+/*
 typedef struct	s_image {
 	void	*img;
 	char	*relative_path;
@@ -41,3 +47,4 @@ int	main(void)
 	mlx_hook(vars.win, 2, 1L<<0, close, &vars);
 	mlx_loop(vars.mlx);
 }
+*/
