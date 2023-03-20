@@ -78,3 +78,4 @@ static void	init_line(t_map *map, char *map_line)
 		free(map_line);
 	}
 }
+

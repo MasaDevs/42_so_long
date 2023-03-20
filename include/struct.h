@@ -11,7 +11,7 @@ struct s_line
 typedef struct s_map	t_map;
 struct	s_map
 {
-	t_line		*line;
+	char		*line;
 	t_map		*prev;
 	t_map		*next;
 };

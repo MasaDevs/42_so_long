@@ -90,5 +90,3 @@ void	check_inside(t_map *map, int c, ssize_t num)
 	if((num > 0 && count != num) || (num < 0 && count <= 0))
 		err_so_long("invalid map");
 }
-
-
