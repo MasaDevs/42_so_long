@@ -3,8 +3,26 @@
 
 int main()
 {
-	
+	t_map	*map;
+	ssize_t	i;
+
+	map = open_map("a.txt");
+	is_rectangle(map);
+	check_args(map);
+	map = map->next;
+	while (map)
+	{
+		i = 0;
+		while (map->line[i].value)
+		{
+			printf("%c", map->line[i].value);
+			i++;
+		}
+		printf("\n");
+		map = map->next;
+	}
 }
+
 /*
 typedef struct	s_image {
 	void	*img;
