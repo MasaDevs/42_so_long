@@ -1,37 +1,45 @@
 #include "so_long.h"
 
-t_map	*search_start(t_map *map)
+void search(t_line	**line, ssize_t	x, ssize_t	y)
 {
-	ssize_t	i;
-
-	if (!map)
-		err_so_long("map doesn't exist");
-	map = map->next;
-	while (map && map->next)
+	if(!line[x])
+		return ;
+	if (!line[x][y].value || line[x][y].value == 'E' || line[x][y].value == '1' || line[x][y].is_checked == 1)
 	{
-		i = 0;
-		while (map->line && map->line[i].value)
-		{
-			if (map->line[i].value == 'P')
-				return (map);
-			i++;
-		}
-		map = map->next;
+		line[x][y].is_checked = 1;
+		return ;
 	}
-	err_so_long("start point doesn't exist");
+	printf("x: %ld y: %ld\n",x, y);
+	line[x][y].is_checked = 1;
+	if(line[x + 1] && line[x + 1][y].value && line[x + 1][y].is_checked == 0)
+		search(line, x + 1, y);
+	if(line[x][y + 1].value && line[x][y + 1].is_checked == 0)
+		search(line, x, y + 1);
+	if(x - 1 >= 0 && line[x - 1][y].value && line[x - 1][y].is_checked == 0)
+		search(line, x - 1, y);
+	if(y - 1 >= 0 && line[x][y - 1].value && line[x][y - 1].is_checked == 0)
+		search(line, x, y - 1);
+	return ;
 }
 
-void	search_col(t_map *map, ssize_t position)
+void check_C(t_line **line)
 {
-	char	ch;
+	ssize_t	x;
+	ssize_t	y;
 
-	ch = map->line[position].value;
-	if (ch == '1' || ch == 'E' || ch == '\0' ||
-		map->line[position].is_checked == 1)
-		return ;
-	if(0 < position)
-		
-	if(map->prev->line)
-
-	if(map->next)
+	x = 0;
+	while (line && line[x])
+	{
+		y = 0;
+		while (line[x][y].value)
+		{
+			if(line[x][y].value == 'C' && line[x][y].is_checked == 0)
+				err_so_long("invalid map");
+			if(line[x][y].value == 'E' && line[x][y].is_checked == 0)
+				err_so_long("invalid map");
+			y++;
+		}
+		x++;
+	}
+	
 }

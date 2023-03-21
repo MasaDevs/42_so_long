@@ -1,6 +1,5 @@
 #include "so_long.h"
-void	check_inside(t_map *map, int c, ssize_t num);
-void	check_up_btm(t_map *map);
+#include <string.h>
 
 void	err_so_long(char *str)
 {
@@ -16,20 +15,17 @@ void	is_rectangle(t_map *map)
 	if (!map || !map->next || !map->next->line)
 		err_so_long("map doesn't exist");
 	map = map->next;
-	map_len = 0;
-	while(map->line && map->line[map_len].value)
-		map_len++;
+	map_len = strlen(map->line);
 	while (map)
 	{
-		len = 0;
-		while(map->line && map->line[len].value)
-			len++;
-		if(map_len != len)
+		len = strlen(map->line);
+		if (map_len != len)
 			err_so_long("this map is not rectangle");
 		map = map->next;
 	}
 }
 
+/*
 void	check_args(t_map *map)
 {
 	if (!map)
@@ -90,3 +86,4 @@ void	check_inside(t_map *map, int c, ssize_t num)
 	if((num > 0 && count != num) || (num < 0 && count <= 0))
 		err_so_long("invalid map");
 }
+*/

@@ -1,28 +1,34 @@
 #include "so_long.h"
-
-
 int main()
 {
 	t_map	*map;
+	t_line	**line;
 	ssize_t	i;
-
+	ssize_t	j;
 	map = open_map("a.txt");
 	is_rectangle(map);
-	check_args(map);
+	line = make_args(map);
+	search(line, 2, 3);
+	check_C(line);
 	map = map->next;
-	while (map)
+	i = 0;
+	while (line[i])
 	{
-		i = 0;
-		while (map->line[i].value)
+		j = 0;
+		while (line[i][j].value)
 		{
-			printf("%c", map->line[i].value);
-			i++;
+			printf("%c", line[i][j].value);
+			j++;
 		}
 		printf("\n");
 		map = map->next;
+		i++;
 	}
 }
-
+__attribute__((destructor)) static void destructor()
+{
+    system("leaks -q ./push_swap");
+}
 /*
 typedef struct	s_image {
 	void	*img;
