@@ -3,6 +3,7 @@
 #include <string.h>
 static t_map	*make_map(int fd);
 static t_map	*init_map(t_map *pre_map, char *map_line);
+static void	free_maps(t_map *map);
 
 t_map	*open_map(char *map_name)
 {
@@ -119,7 +120,20 @@ t_line	**make_args(t_map *map)
 		i++;
 	}
 	line_args[i] = NULL;
+	free_maps(map);
 	return (line_args);
+}
+
+static void	free_maps(t_map *map)
+{
+	t_map	*next_map;
+
+	while (map)
+	{
+		next_map = map->next;
+		free(map);
+		map = next_map;
+	}
 }
 //malloc
 /*

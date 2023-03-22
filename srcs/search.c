@@ -1,5 +1,28 @@
 #include "so_long.h"
 
+void	search_start(t_vars	*vars)
+{
+	ssize_t	x;
+	ssize_t y;
+
+	y = 0;
+	while (vars->line[y])
+	{
+		x = 0;
+		while (vars->line[y][x].value)
+		{
+			if (vars->line[y][x].value == 'P')
+			{
+				vars->player_x = x;
+				vars->player_y = y;
+				return ;
+			}
+			x++;
+		}
+		y++;
+	}
+}
+
 void search(t_line	**line, ssize_t	x, ssize_t	y)
 {
 	if(!line[x])
