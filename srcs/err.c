@@ -11,15 +11,19 @@ void	is_rectangle(t_map *map)
 {
 	ssize_t	map_len;
 	ssize_t	len;
+	ssize_t	flags;
 
 	if (!map || !map->next || !map->next->line)
 		err_so_long("map doesn't exist");
 	map = map->next;
 	map_len = strlen(map->line);
+	flags = 0;
 	while (map)
 	{
 		len = strlen(map->line);
-		if (map_len != len)
+		if(len == 0)
+			flags = 1;
+		if ((map_len != len && flags == 0) || (len != 0 && flags == 1))
 			err_so_long("this map is not rectangle");
 		map = map->next;
 	}

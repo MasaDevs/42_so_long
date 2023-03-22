@@ -20,6 +20,7 @@ static t_map	*make_map(int fd)
 	t_map	*map_head;
 	t_map	*map;
 	char	*map_line;
+	char	*new_line;
 
 	map_head = init_map(NULL, NULL);
 	map = map_head;
@@ -28,6 +29,9 @@ static t_map	*make_map(int fd)
 		map_line = get_next_line(fd);
 		if (!map_line)
 			break ;
+		new_line = strchr(map_line, '\n');
+		if(new_line)
+			*new_line = '\0';
 		map = init_map(map, map_line);
 		if (!map)
 			err_so_long("map error\n");
@@ -57,26 +61,17 @@ static t_map	*init_map(t_map *pre_map, char *map_line)
 
 ssize_t	check_shapes(t_map *map)
 {
-	char	*str;
 	ssize_t	count;
-	int		flags;
 
 	if(!map)
 		err_so_long("map doesn't exist");
 	map = map->next;
 	count = 0;
-	flags = 0;
 	while(map)
 	{
-		if(!strcmp(map->line, "\n"))
-			flags = 1;
-		else
-			count++;
-		if(strcmp(map->line, "\n") && flags == 1)
-			err_so_long("map error");
-		str = strchr(map->line, '\n');
-		if(str)
-			*str = '\0';
+		if(!strlen(map->line))
+			break;
+		count++;
 		map = map->next;
 	}
 	return (count);
@@ -89,13 +84,14 @@ ssize_t	linelcpy(t_line *dst, char	*src, ssize_t len)
 	i = 0;
 	while (i + 1 < len)
 	{
+		if(src[i] == '\n')
+			break;
 		dst[i].value = src[i];
 		dst[i].is_checked = 0;
 		i++;
 	}
 	dst[i].value = '\0';
 	dst[i].is_checked = 0;
-	
 	return (len);
 }
 
@@ -116,6 +112,8 @@ t_line	**make_args(t_map *map)
 		line_args[i] = malloc(sizeof(t_line) * strlen(map->line) + 1);
 		if(!line_args[i])
 			err_so_long("malloc error");
+		if(!strlen(map->line))
+			break;
 		linelcpy(line_args[i], map->line, strlen(map->line) + 1);
 		map = map->next;
 		i++;

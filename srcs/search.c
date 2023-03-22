@@ -9,7 +9,6 @@ void search(t_line	**line, ssize_t	x, ssize_t	y)
 		line[x][y].is_checked = 1;
 		return ;
 	}
-	printf("x: %ld y: %ld\n",x, y);
 	line[x][y].is_checked = 1;
 	if(line[x + 1] && line[x + 1][y].value && line[x + 1][y].is_checked == 0)
 		search(line, x + 1, y);
