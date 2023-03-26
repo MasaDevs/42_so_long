@@ -1,6 +1,8 @@
 #include "so_long.h"
 #include <string.h>
 
+void	check_paras(t_line **line, char chr, const ssize_t count);
+
 void	err_so_long(char *str)
 {
 	printf("%s\n", str);
@@ -29,6 +31,52 @@ void	is_rectangle(t_map *map)
 	}
 }
 
+void	check_compose(t_line **line)
+{
+	ssize_t x;
+	ssize_t y;
+	char	chr;
+
+	y = 0;
+	while (line && line[y])
+	{
+		x = 0;
+		while (line[y][x].value)
+		{
+			chr = line[y][x].value;
+			if (chr != '0' && chr != '1' && chr != 'E' && chr != 'C' && chr != 'P')
+				err_so_long("maps must be made by 0, 1, E, P, C");
+			x++;
+		}
+		y++;
+	}
+	printf("ok\n");
+	check_paras(line, 'E', 1);
+	check_paras(line, 'P', 1);
+	check_paras(line, 'C', 0);
+}
+void	check_paras(t_line **line, char chr, const ssize_t count)
+{
+	ssize_t	x;
+	ssize_t	y;
+	ssize_t	nums;
+
+	nums = 0;
+	y = 0;
+	while (line && line[y])
+	{
+		x = 0;
+		while (line[y][x].value)
+		{
+			if (chr == line[y][x].value)
+				nums++;
+			x++;
+		}
+		y++;
+	}
+	if ((0 < count && nums != count) || (count == 0 && nums <= 0))
+		err_so_long("invalid map\n");
+}
 /*
 void	check_args(t_map *map)
 {

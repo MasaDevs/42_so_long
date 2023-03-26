@@ -38,6 +38,7 @@ int	main(void)
 	is_rectangle(map);
 	vars.line = make_args(map);
 	search_start(&vars);
+	check_compose(vars.line);
 	search(vars.line, vars.player_x, vars.player_y);
 	check_C(vars.line);
 	vars.mlx = mlx_init();
