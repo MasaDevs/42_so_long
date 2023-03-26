@@ -14,7 +14,7 @@ int	update_map(int keycode, t_vars	*vars)
 		change_locale(vars, -1, 0);
 	else if(keycode == 's')
 		change_locale(vars, 0, 1);
-	else if(keycode == 65307)
+	else if(keycode == 65307 || keycode == 'x')
 	{
 		mlx_destroy_window(vars->mlx, vars->win);
 		exit(0);
@@ -115,6 +115,11 @@ void	draw_pixel(t_vars *vars, ssize_t x, ssize_t y, char *path)
 {
 	t_image	img;
 
-	img.img = mlx_xpm_file_to_image(vars->mlx, path, &img.img_width, &img.img_height);	
+	if (MAP_WIDTH / (SIZE * 2) < vars->player_x)
+		x = x - vars->player_x + (MAP_WIDTH / (SIZE * 2));
+	if (MAP_HEIGHT / (SIZE * 2) < vars->player_y)
+		y = y - vars->player_y + (MAP_HEIGHT / (SIZE * 2));
+	img.img = mlx_xpm_file_to_image(vars->mlx, path, &img.img_width,
+			&img.img_height);
 	mlx_put_image_to_window(vars->mlx, vars->win, img.img, x * SIZE, y * SIZE);
 }

@@ -34,5 +34,4 @@ struct s_vars
 	ssize_t	player_x;
 	ssize_t	player_y;
 };
-
 #endif

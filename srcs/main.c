@@ -45,4 +45,5 @@ int	main(void)
 	drawing(&vars);
 	mlx_hook(vars.win, 2, 1L<<0, update_map, &vars);
 	mlx_loop(vars.mlx);
+	
 }
