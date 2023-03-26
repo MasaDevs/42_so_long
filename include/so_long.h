@@ -27,4 +27,5 @@ void	drawing(t_vars *vars);
 void	err_so_long(char *str);
 void	is_rectangle(t_map *map);
 void	check_compose(t_line **line);
+void	is_sorrounded(t_map *map);
 #endif

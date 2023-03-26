@@ -31,6 +31,36 @@ void	is_rectangle(t_map *map)
 	}
 }
 
+void	is_sorrounded(t_map *map)
+{
+	ssize_t	i;
+
+	if (!map || !map->next || !map->next->line)
+		err_so_long("map doesn't exist");
+	map = map->next;
+	i = 0;
+	while(map->line && map->line[i])
+	{
+		if(map->line[i] != '1')
+			err_so_long("1 map is not sorrounded by 1");
+		i++;
+	}
+	map = map->next;
+	while (map && map->next)
+	{
+		if(!map-> line ||map->line[0] != '1' || map->line[strlen(map->line) - 1] != '1')
+			err_so_long("2 map is not sorrounded by 1");
+		map = map->next;	
+	}	
+	i = 0;
+	while(map->line && map->line[i])
+	{
+		if(map->line[i] != '1')
+			err_so_long("3 map is not sorrounded by 1");
+		i++;
+	}
+}
+
 void	check_compose(t_line **line)
 {
 	ssize_t x;

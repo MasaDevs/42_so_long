@@ -2,10 +2,10 @@
 void	draw_pixel(t_vars *vars, ssize_t x, ssize_t y, char *path);
 void	change_locale(t_vars *vars, ssize_t x, ssize_t y);
 int move_or_not(t_vars *vars, ssize_t x, ssize_t y);
+void fill_space(t_vars *vars, ssize_t y, ssize_t x);
 
 int	update_map(int keycode, t_vars	*vars)
 {
-	printf("%c\n", keycode);
 	if (keycode == 'w')
 		change_locale(vars, 0, -1);
 	else if (keycode == 'd')
@@ -36,7 +36,7 @@ void check_goal(t_vars *vars, ssize_t x, ssize_t y)
 		{
 			if(vars->line[i][j].value == 'C')
 			{
-				printf("you're dead! fuck you\n");
+				printf("you lose !\n");
 				mlx_destroy_window(vars->mlx, vars->win);
 				exit(0);
 				
@@ -45,7 +45,6 @@ void check_goal(t_vars *vars, ssize_t x, ssize_t y)
 		}
 		i++;
 	}
-
 	vars->line[vars->player_y][vars->player_x].value = '0';
 	vars->line[vars->player_y + y][vars->player_x + x].value = 'P';
 	vars->player_x = vars->player_x + x;
@@ -56,8 +55,12 @@ void check_goal(t_vars *vars, ssize_t x, ssize_t y)
 
 void	change_locale(t_vars *vars, ssize_t x, ssize_t y)
 {
+	static size_t	count;
+
 	if (move_or_not(vars, x, y))
 	{
+		count++;
+		printf("%ld\n", count);
 		vars->line[vars->player_y][vars->player_x].value = '0';
 		vars->line[vars->player_y + y][vars->player_x + x].value = 'P';
 		vars->player_x = vars->player_x + x;
@@ -109,6 +112,36 @@ void	drawing(t_vars *vars)
 		}
 		i++;
 	}
+	fill_space(vars, i, j);
+}
+
+void fill_space(t_vars *vars, ssize_t y, ssize_t x)
+{
+	ssize_t	i;
+	ssize_t	j;
+
+	i = 0;
+	while (i < y)
+	{
+		j = x;
+		while(j - vars->player_x < MAP_WIDTH / SIZE)
+		{
+			draw_pixel(vars, j, i, "./images/square-black-64.xpm");
+			j++;
+		}
+		i++;
+	}
+	while(y - vars->player_y < MAP_HEIGHT / SIZE)
+	{
+		j = 0;
+		while(j < MAP_WIDTH / SIZE)
+		{
+			draw_pixel(vars, j, y, "./images/square-black-64.xpm");
+			j++;
+		}
+		y++;
+	}
+	
 }
 
 void	draw_pixel(t_vars *vars, ssize_t x, ssize_t y, char *path)
@@ -121,5 +154,7 @@ void	draw_pixel(t_vars *vars, ssize_t x, ssize_t y, char *path)
 		y = y - vars->player_y + (MAP_HEIGHT / (SIZE * 2));
 	img.img = mlx_xpm_file_to_image(vars->mlx, path, &img.img_width,
 			&img.img_height);
+	if(!img.img)
+		err_so_long("image doesn't exist");
 	mlx_put_image_to_window(vars->mlx, vars->win, img.img, x * SIZE, y * SIZE);
 }

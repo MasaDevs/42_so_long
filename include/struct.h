@@ -1,6 +1,8 @@
 #ifndef STRUCT_H
 #define	STRUCT_H
 
+#include <stdlib.h>
+
 typedef	struct s_line	t_line;
 struct s_line
 {
