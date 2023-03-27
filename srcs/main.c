@@ -34,7 +34,10 @@ int	main(int argc, char *argv[])
 	t_vars	vars;
 	t_map	*map;
 
-	map = open_map("a.txt");
+	if(argc != 2)
+		err_so_long("arguments must be 2.");
+	check_file_name(argv[1]);
+	map = open_map(argv[1]);
 	is_rectangle(map);
 	is_sorrounded(map);
 	vars.line = make_args(map);
@@ -46,5 +49,5 @@ int	main(int argc, char *argv[])
 	vars.win= mlx_new_window(vars.mlx, MAP_WIDTH, MAP_HEIGHT, "so_long");
 	drawing(&vars);
 	mlx_hook(vars.win, 2, 1L<<0, update_map, &vars);
-	mlx_loop(vars.mlx);	
+	mlx_loop(vars.mlx);
 }

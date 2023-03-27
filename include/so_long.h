@@ -24,6 +24,7 @@ void check_C(t_line **line);
 int	update_map(int keycode, t_vars	*vars);
 void	drawing(t_vars *vars);
 //err.c
+void	check_file_name(char *str);
 void	err_so_long(char *str);
 void	is_rectangle(t_map *map);
 void	check_compose(t_line **line);

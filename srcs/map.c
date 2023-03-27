@@ -11,6 +11,8 @@ t_map	*open_map(char *map_name)
 	t_map	*map_head;
 
 	fd = open(map_name, O_RDONLY);
+	if (fd == -1)
+		err_so_long("can't open the map");
 	map_head = make_map(fd);
 	close(fd);
 	return (map_head);

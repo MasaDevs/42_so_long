@@ -3,6 +3,26 @@
 
 void	check_paras(t_line **line, char chr, const ssize_t count);
 
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	if (needle[0] == '\0')
+		return ((char *)haystack);
+	while (i < len && haystack[i] != '\0')
+	{
+		j = i;
+		while (haystack[j] == needle[j - i] && j < len && haystack[j] != '\0')
+			j++;
+		if (haystack[j - 1] == needle[j - i - 1] && needle[j - i] == '\0')
+			return ((char *)&haystack[i]);
+		i++;
+	}
+	return (NULL);
+}
+
 void	err_so_long(char *str)
 {
 	printf("%s\n", str);
@@ -106,6 +126,20 @@ void	check_paras(t_line **line, char chr, const ssize_t count)
 	}
 	if ((0 < count && nums != count) || (count == 0 && nums <= 0))
 		err_so_long("invalid map\n");
+}
+
+void check_file_name(char *str)
+{
+	while(str)
+	{
+		str = ft_strnstr(str, ".ber", strlen(str));
+		if (!str)
+			break;
+		if (strlen(str) == 4)
+			return;
+		str++;
+	}
+	err_so_long("file extension must be '.ber'");
 }
 /*
 void	check_args(t_map *map)
