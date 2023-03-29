@@ -6,7 +6,7 @@
 /*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 16:34:45 by marai             #+#    #+#             */
-/*   Updated: 2023/03/30 02:20:09 by marai            ###   ########.fr       */
+/*   Updated: 2023/03/30 03:45:53 by marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	search(t_line **line, ssize_t x, ssize_t y)
 	return ;
 }
 
-void	check_C(t_line **line)
+void	check_map(t_line **line)
 {
 	ssize_t	x;
 	ssize_t	y;
@@ -71,11 +71,29 @@ void	check_C(t_line **line)
 		while (line[x][y].value)
 		{
 			if (line[x][y].value == 'C' && line[x][y].is_checked == 0)
-				err_so_long("2 invalid map");
+				line_free_exit(line, "2 invalid map");
 			if (line[x][y].value == 'E' && line[x][y].is_checked == 0)
-				err_so_long("4 invalid map");
+				line_free_exit(line, "4 invalid map");
 			y++;
 		}
 		x++;
 	}
+}
+
+void calc_size(t_vars *vars)
+{
+	ssize_t	i;
+	ssize_t	j;
+
+	i = 0;
+	j = 0;
+	if(!vars->line)
+		line_free_exit(vars->line, "map error\n");
+	while (vars->line && vars->line[0][i].value)
+		i++;
+	while (vars->line && vars->line[j])
+		j++;
+	vars->map_width = i;
+	vars->map_height = j;
+	
 }

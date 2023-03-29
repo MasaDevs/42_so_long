@@ -6,7 +6,7 @@
 /*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 20:14:40 by marai             #+#    #+#             */
-/*   Updated: 2022/10/24 01:21:23 by marai            ###   ########.fr       */
+/*   Updated: 2023/03/30 02:44:31 by marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,34 +31,6 @@ char	*ft_strndupfree(char *s1, size_t n)
 	dst[i] = '\0';
 	set_free(&s1);
 	return (dst);
-}
-
-size_t	ft_strlen(char *str)
-{
-	size_t	a;
-
-	if (!str)
-		return (0);
-	a = 0;
-	while (str[a] != '\0')
-		a++;
-	return (a);
-}
-
-char	*ft_strchr(const char *s, int c)
-{
-	unsigned int	i;
-
-	i = 0;
-	while (s[i] != '\0')
-	{
-		if (s[i] == (char)c)
-			return ((char *)&s[i]);
-		i++;
-	}
-	if (s[i] == (char)c)
-		return ((char *)&s[i]);
-	return (NULL);
 }
 
 char	*ft_strjoinfree(char *s1, char *s2)

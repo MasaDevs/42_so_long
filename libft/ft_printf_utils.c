@@ -6,7 +6,7 @@
 /*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 03:20:41 by marai             #+#    #+#             */
-/*   Updated: 2022/12/31 00:12:34 by marai            ###   ########.fr       */
+/*   Updated: 2023/03/30 02:53:34 by marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,19 +56,4 @@ ssize_t	ft_putnbr_ptr(uintptr_t nbr, char *base, ssize_t sign)
 		len++;
 	}
 	return (len);
-}
-
-void	ft_putchar_fd(char c, int fd)
-{
-	write(fd, &c, 1);
-}
-
-size_t	ft_strlen(const char *str)
-{
-	size_t	a;
-
-	a = 0;
-	while (str[a] != '\0')
-		a++;
-	return (a);
 }

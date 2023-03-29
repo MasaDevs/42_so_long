@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Marai <MasaDevs@gmail.com>                 +#+  +:+       +#+        */
+/*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 16:33:55 by marai             #+#    #+#             */
-/*   Updated: 2023/03/29 22:16:23 by Marai            ###   ########.fr       */
+/*   Updated: 2023/03/30 03:22:12 by marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 
 static t_map	*make_map(int fd);
 static t_map	*init_map(t_map *pre_map, char *map_line);
-static void		free_maps(t_map *map);
 
 t_map	*open_map(char *map_name)
 {
@@ -45,14 +44,15 @@ static t_map	*make_map(int fd)
 		map_line = get_next_line(fd);
 		if (!map_line)
 			break ;
-		new_line = strchr(map_line, '\n');
+		new_line = ft_strchr(map_line, '\n');
 		if (new_line)
 			*new_line = '\0';
 		map = init_map(map, map_line);
 		if (!map)
 		{
 			close(fd);
-			err_so_long("map error\n");
+			map_free(map_head);
+			err_so_long("map malloc error\n");
 		}
 	}
 	return (map_head);
@@ -64,7 +64,7 @@ static t_map	*init_map(t_map *pre_map, char *map_line)
 
 	map = malloc(sizeof(t_map));
 	if (!map)
-		err_so_long("map malloc error");
+		return NULL;
 	if (pre_map == NULL)
 		map->prev = NULL;
 	else
@@ -77,30 +77,12 @@ static t_map	*init_map(t_map *pre_map, char *map_line)
 	return (map);
 }
 
-ssize_t	check_shapes(t_map *map)
-{
-	ssize_t	count;
-
-	if (!map)
-		err_so_long("map doesn't exist");
-	map = map->next;
-	count = 0;
-	while (map)
-	{
-		if (!strlen(map->line))
-			break ;
-		count++;
-		map = map->next;
-	}
-	return (count);
-}
-
 ssize_t	linelcpy(t_line *dst, char *src, ssize_t len)
 {
 	ssize_t	i;
 
 	i = 0;
-	while (i + 1 < len)
+	while (i + 1 < len && src[i] != '\0')
 	{
 		if (src[i] == '\n')
 			break ;
@@ -108,9 +90,10 @@ ssize_t	linelcpy(t_line *dst, char *src, ssize_t len)
 		dst[i].is_checked = 0;
 		i++;
 	}
-	dst[i].value = '\0';
+	if (len != 0)
+		dst[i].value = '\0';
 	dst[i].is_checked = 0;
-	return (len);
+	return (ft_strlen(src));
 }
 
 t_line	**make_args(t_map *map)
@@ -123,30 +106,18 @@ t_line	**make_args(t_map *map)
 	line_args = malloc(sizeof(t_line *) * (args_len + 1));
 	if (!line_args)
 		err_so_long("malloc error");
-	i = 0;
 	map = map->next;
+	i = 0;
 	while (i < args_len)
 	{
 		line_args[i] = malloc(sizeof(t_line) * strlen(map->line) + 1);
 		if (!line_args[i])
-			err_so_long("malloc error");
+			line_free(line_args, i);
 		linelcpy(line_args[i], map->line, strlen(map->line) + 1);
 		map = map->next;
 		i++;
 	}
 	line_args[i] = NULL;
-	free_maps(map);
+	map_free(map);
 	return (line_args);
-}
-
-static void	free_maps(t_map *map)
-{
-	t_map	*next_map;
-
-	while (map)
-	{
-		next_map = map->next;
-		free(map);
-		map = next_map;
-	}
 }

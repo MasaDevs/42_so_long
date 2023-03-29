@@ -15,7 +15,7 @@ OBJS	=	$(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
 
 all: $(NAME)
 $(NAME):$(OBJS) $(LIBFT) $(MLXLIB)
-	$(CC) $(CFLAGS) $(OBJS) $(MLXLIB) $(LIBDIR) $(LIB) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(MLXLIB) $(LIBDIR) $(LIB) $(LIBFT) -o $(NAME)
 
 $(LIBFT):
 	@make -C ./libft
