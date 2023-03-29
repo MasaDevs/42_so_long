@@ -2,9 +2,11 @@ NAME	=	so_long
 CC		=	gcc
 CFLAGS	=	-Wall -Wextra -Werror
 INCLUDE	=	-I /usr/include/ -I /usr/local/include -I ./include
+LIBDIR	=	-L/usr/local/lib -L/usr/lib
+LIB		=	-lmlx -lmlx_Linux -lXext -lX11 -lm -lz
+LIBFT	=	./libft/libft.a
 
-SRCS	=	$(shell find srcs/ -name "*.c") \
-			$(shell find get_next_line -name "*.c")
+SRCS	=	$(shell find srcs/ -name "*.c")
 OBJDIR	=	obj
 OBJS	=	$(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
 
@@ -13,5 +15,23 @@ $(OBJDIR)/%.o: %.c
 	$(CC) $(INCLUDE) $(CFLAGS) -o $@ -c $<
 
 all: $(NAME)
-$(NAME):$(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) ./libft/libft.a -L/usr/local/lib -lmlx -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz -o $@
+$(NAME):$(OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBDIR) $(LIB) -o $(NAME)
+
+$(LIBFT):
+	@make -C ./libft
+
+libft:
+	make -C	./libft
+
+clean:
+	rm -rf $(OBJDIR)
+	make clean -C ./libft
+fclean: clean
+	rm -f $(NAME)
+	make fclean -C ./libft
+re:	fclean all
+
+.PHONY:
+	all clean fclean re
+
