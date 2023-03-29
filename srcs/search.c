@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   search.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Marai <MasaDevs@gmail.com>                 +#+  +:+       +#+        */
+/*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 16:34:45 by marai             #+#    #+#             */
-/*   Updated: 2023/03/29 22:15:32 by Marai            ###   ########.fr       */
+/*   Updated: 2023/03/30 02:20:09 by marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	search_start(t_vars *vars)
 		{
 			if (vars->line[y][x].value == 'P')
 			{
+				vars->pre_x = x;
+				vars->pre_y = y;
 				vars->player_x = x;
 				vars->player_y = y;
 				return ;

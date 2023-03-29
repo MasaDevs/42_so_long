@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   err.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Marai <MasaDevs@gmail.com>                 +#+  +:+       +#+        */
+/*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 16:33:44 by marai             #+#    #+#             */
-/*   Updated: 2023/03/29 22:16:42 by Marai            ###   ########.fr       */
+/*   Updated: 2023/03/30 02:30:14 by marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	is_sorrounded(t_map *map)
 		map = map->next;
 	}
 	i = 0;
-	while (map->line && map->line[i])
+	while (map && map->line && map->line[i])
 	{
 		if (map->line[i] != '1')
 			err_so_long("3 map is not sorrounded by 1");

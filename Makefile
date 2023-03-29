@@ -3,9 +3,11 @@ CC		=	gcc
 CFLAGS	=	-Wall -Wextra -Werror
 INCLUDE	=	-I /usr/include/ -I /usr/local/include -I ./include
 LIBDIR	=	-L/usr/local/lib -L/usr/lib
-LIB		=	-lmlx -lmlx_Linux -lXext -lX11 -lm -lz
+#LIB		=	-lmlx -lmlx_Linux -lXext -lX11 -lm -lz
+LIB	=	-lmlx -framework OpenGL -framework Appkit
 LIBFT	=	./libft/libft.a
-MLXLIB	=	./minilibx-linux/libmlx.a
+#MLXLIB	=	./minilibx-linux/libmlx.a
+MLXlib	=	./minilibx-linux/libmlx_Linux.a
 SRCS	=	$(shell find srcs/ -name "*.c")
 OBJDIR	=	obj
 OBJS	=	$(addprefix $(OBJDIR)/, $(SRCS:.c=.o))

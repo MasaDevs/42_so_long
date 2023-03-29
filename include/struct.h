@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marai <masadevs@gmail.com>                 +#+  +:+       +#+        */
+/*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 16:33:17 by marai             #+#    #+#             */
-/*   Updated: 2023/03/29 16:33:19 by marai            ###   ########.fr       */
+/*   Updated: 2023/03/30 02:18:31 by marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define STRUCT_H
 
 # include <stdlib.h>
+# include <unistd.h>
 
 typedef struct s_line	t_line;
 struct					s_line
@@ -45,6 +46,10 @@ struct					s_vars
 	void				*mlx;
 	void				*win;
 	t_line				**line;
+	ssize_t				map_width;
+	ssize_t				map_height;
+	ssize_t				pre_x;
+	ssize_t				pre_y;
 	ssize_t				player_x;
 	ssize_t				player_y;
 };

@@ -3,20 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Marai <MasaDevs@gmail.com>                 +#+  +:+       +#+        */
+/*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 16:33:08 by marai             #+#    #+#             */
-/*   Updated: 2023/03/29 16:40:59 by Marai            ###   ########.fr       */
+/*   Updated: 2023/03/30 01:49:28 by marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
+/*
 # define ESC 65307
 # define D_ALLOW 65363
 # define W_ALLOW 65362
 # define A_ALLOW 65361
 # define S_ALLOW 65364
+# define S_KEY 115
+# define W_KEY 119
+# define A_KEY 97
+# define D_KEY 100 
+*/ 
+# define ESC 53
+# define D_ALLOW 65363
+# define W_ALLOW 65362
+# define A_ALLOW 65361
+# define S_ALLOW 65364
+# define S_KEY 1
+# define W_KEY 13
+# define A_KEY 0
+# define D_KEY 2
 # define EDGE 1
 # define MIDDLE 0
 # define MAP_WIDTH 1024
