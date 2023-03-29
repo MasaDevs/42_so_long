@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Marai <MasaDevs@gmail.com>                 +#+  +:+       +#+        */
+/*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 00:52:09 by marai             #+#    #+#             */
-/*   Updated: 2023/03/30 00:56:30 by Marai            ###   ########.fr       */
+/*   Updated: 2023/03/30 05:20:35 by marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static void	edge_check(t_map *map, t_map *map_head)
 	ssize_t	i;
 
 	i = 0;
-	while (map->line && map->line[i])
+	while (map && map->line && map->line[i])
 	{
 		if (map->line[i] != '1')
 		{

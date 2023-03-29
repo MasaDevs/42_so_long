@@ -6,7 +6,7 @@
 /*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 16:33:08 by marai             #+#    #+#             */
-/*   Updated: 2023/03/30 00:52:47 by marai            ###   ########.fr       */
+/*   Updated: 2023/03/30 05:26:21 by marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@
 # define D_KEY 100
 */
 # define ESC 53
-# define D_ALLOW 65363
-# define W_ALLOW 65362
-# define A_ALLOW 65361
-# define S_ALLOW 65364
+# define D_ALLOW 124
+# define W_ALLOW 126
+# define A_ALLOW 123
+# define S_ALLOW 125
 # define S_KEY 1
 # define W_KEY 13
 # define A_KEY 0
