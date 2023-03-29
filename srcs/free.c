@@ -7,6 +7,7 @@ void	map_free(t_map	*map)
 	while(map)
 	{
 		next_map = map->next;
+		free(map->line);
 		free(map);
 		map = map->next;
 	}

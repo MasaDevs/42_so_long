@@ -31,12 +31,12 @@ void	check_goal(t_vars *vars, ssize_t x, ssize_t y)
 
 void	change_locale(t_vars *vars, ssize_t x, ssize_t y)
 {
-	static size_t	count;
+	static int	count;
 
 	if (move_or_not(vars, x, y))
 	{
 		count++;
-		ft_printf("%ld\n", count);
+		ft_printf("%d\n", count);
 		vars->line[vars->player_y][vars->player_x].value = '0';
 		vars->line[vars->player_y + y][vars->player_x + x].value = 'P';
 		vars->pre_x	= vars->player_x;

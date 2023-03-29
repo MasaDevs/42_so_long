@@ -6,7 +6,7 @@
 /*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 16:34:36 by marai             #+#    #+#             */
-/*   Updated: 2023/03/30 03:59:58 by marai            ###   ########.fr       */
+/*   Updated: 2023/03/30 04:42:39 by marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,9 @@ int	main(int argc, char *argv[])
 	mlx_hook(vars.win, 2, 1L << 0, update_map, &vars);
 	mlx_hook(vars.win, 17, 1L << 2, escape, &vars);
 	mlx_loop(vars.mlx);
+	line_free(vars.line, vars.map_height);
 }
-//__attribute__((destructor)) static void destructor()
-//{
-//	system("leaks -q so_long");
-//}
+__attribute__((destructor)) static void destructor()
+{
+	system("leaks -q so_long");
+}

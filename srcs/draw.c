@@ -6,7 +6,7 @@
 /*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 16:33:30 by marai             #+#    #+#             */
-/*   Updated: 2023/03/30 04:05:55 by marai            ###   ########.fr       */
+/*   Updated: 2023/03/30 04:48:03 by marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	swap_draw(t_vars *vars);
 
 int	update_map(int keycode, t_vars *vars)
 {
-	ft_printf("%d\n", keycode);
 	if (keycode == W_KEY || keycode == W_ALLOW)
 		change_locale(vars, 0, -1);
 	else if (keycode == D_KEY || keycode == D_ALLOW)

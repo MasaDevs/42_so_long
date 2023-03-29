@@ -6,7 +6,7 @@
 /*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 16:33:55 by marai             #+#    #+#             */
-/*   Updated: 2023/03/30 04:04:15 by marai            ###   ########.fr       */
+/*   Updated: 2023/03/30 04:45:25 by marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static t_map	*make_map(int fd)
 	}
 	return (map_head);
 }
-//malloc
+
 static t_map	*init_map(t_map *pre_map, char *map_line)
 {
 	t_map	*map;
