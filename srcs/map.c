@@ -6,7 +6,7 @@
 /*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 16:33:55 by marai             #+#    #+#             */
-/*   Updated: 2023/03/30 03:22:12 by marai            ###   ########.fr       */
+/*   Updated: 2023/03/30 04:04:15 by marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,10 +110,10 @@ t_line	**make_args(t_map *map)
 	i = 0;
 	while (i < args_len)
 	{
-		line_args[i] = malloc(sizeof(t_line) * strlen(map->line) + 1);
+		line_args[i] = malloc(sizeof(t_line) * ft_strlen(map->line) + 1);
 		if (!line_args[i])
 			line_free(line_args, i);
-		linelcpy(line_args[i], map->line, strlen(map->line) + 1);
+		linelcpy(line_args[i], map->line, ft_strlen(map->line) + 1);
 		map = map->next;
 		i++;
 	}

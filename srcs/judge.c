@@ -13,7 +13,7 @@ void	check_goal(t_vars *vars, ssize_t x, ssize_t y)
 		{
 			if (vars->line[i][j].value == 'C')
 			{
-				printf("you don't collect all items !\n");
+				ft_printf("you don't collect all items !\n");
 				return ;
 			}
 			j++;

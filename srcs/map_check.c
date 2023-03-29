@@ -90,9 +90,9 @@ void	is_sorrounded(t_map *map)
 	map = map->next;
 	while (map && map->next)
 	{
-		if(!map->line || !strlen(map->line))
+		if(!map->line || !ft_strlen(map->line))
 			break;
-		if (!map->line || map->line[0] != '1' || map->line[strlen(map->line)
+		if (!map->line || map->line[0] != '1' || map->line[ft_strlen(map->line)
 			- 1] != '1')
 			{
 				map_free(map_head);
