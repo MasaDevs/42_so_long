@@ -6,20 +6,20 @@
 /*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 16:33:08 by marai             #+#    #+#             */
-/*   Updated: 2023/03/30 03:57:59 by marai            ###   ########.fr       */
+/*   Updated: 2023/03/30 00:52:47 by marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
+# include "../libft/libft.h"
+# include "struct.h"
 # include <fcntl.h>
 # include <mlx.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <sys/stat.h>
 # include <sys/types.h>
-# include "struct.h"
-#include "../libft/libft.h"
 /* for linux
 # define ESC 65307
 # define D_ALLOW 65363
@@ -29,8 +29,8 @@
 # define S_KEY 115
 # define W_KEY 119
 # define A_KEY 97
-# define D_KEY 100 
-*/ 
+# define D_KEY 100
+*/
 # define ESC 53
 # define D_ALLOW 65363
 # define W_ALLOW 65362
@@ -62,9 +62,9 @@ void	check_compose(t_line **line);
 void	is_sorrounded(t_map *map);
 int		escape(t_vars *vars);
 //free
-void	map_free(t_map	*map);
+void	map_free(t_map *map);
 void	line_free(t_line **line, ssize_t len);
-void	line_free_exit(t_line **line, char	*str);
+void	line_free_exit(t_line **line, char *str);
 //check
 void	check_file_name(char *str);
 //judge

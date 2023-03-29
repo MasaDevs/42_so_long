@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
+/*   By: Marai <MasaDevs@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 16:33:30 by marai             #+#    #+#             */
-/*   Updated: 2023/03/30 04:48:03 by marai            ###   ########.fr       */
+/*   Updated: 2023/03/30 00:55:04 by Marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,13 @@ void	draw_pixel(t_vars *vars, ssize_t x, ssize_t y, char *path)
 	mlx_put_image_to_window(vars->mlx, vars->win, img.img, x * SIZE, y * SIZE);
 }
 
-
 void	swap_draw(t_vars *vars)
 {
 	draw_pixel(vars, vars->pre_x, vars->pre_y, "./images/square-green-64.xpm");
-	draw_pixel(vars, vars->player_x, vars->player_y, "./images/square-yellow-64.xpm");
+	draw_pixel(vars, vars->player_x, vars->player_y,
+		"./images/square-yellow-64.xpm");
 }
+
 /*
 void	drawing(t_vars *vars)
 {

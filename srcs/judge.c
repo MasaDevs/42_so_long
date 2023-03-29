@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   judge.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marai <masadevs@gmail.com>                 +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/30 00:51:36 by marai             #+#    #+#             */
+/*   Updated: 2023/03/30 00:51:40 by marai            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	check_goal(t_vars *vars, ssize_t x, ssize_t y)
@@ -39,7 +51,7 @@ void	change_locale(t_vars *vars, ssize_t x, ssize_t y)
 		ft_printf("%d\n", count);
 		vars->line[vars->player_y][vars->player_x].value = '0';
 		vars->line[vars->player_y + y][vars->player_x + x].value = 'P';
-		vars->pre_x	= vars->player_x;
+		vars->pre_x = vars->player_x;
 		vars->pre_y = vars->player_y;
 		vars->player_x = vars->player_x + x;
 		vars->player_y = vars->player_y + y;

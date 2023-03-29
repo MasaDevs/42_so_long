@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
+/*   By: Marai <MasaDevs@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 16:34:36 by marai             #+#    #+#             */
-/*   Updated: 2023/03/30 04:42:39 by marai            ###   ########.fr       */
+/*   Updated: 2023/03/30 00:55:40 by Marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-void calc_size(t_vars *vars);
+
+void	calc_size(t_vars *vars);
 
 int	main(int argc, char *argv[])
 {
@@ -31,13 +32,15 @@ int	main(int argc, char *argv[])
 	check_map(vars.line);
 	calc_size(&vars);
 	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, vars.map_width * SIZE, vars.map_height * SIZE, "so_long");
+	vars.win = mlx_new_window(vars.mlx, vars.map_width * SIZE, vars.map_height
+			* SIZE, "so_long");
 	drawing(&vars);
 	mlx_hook(vars.win, 2, 1L << 0, update_map, &vars);
 	mlx_hook(vars.win, 17, 1L << 2, escape, &vars);
 	mlx_loop(vars.mlx);
 	line_free(vars.line, vars.map_height);
 }
+
 __attribute__((destructor)) static void destructor()
 {
 	system("leaks -q so_long");

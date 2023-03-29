@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marai <masadevs@gmail.com>                 +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/30 00:51:21 by marai             #+#    #+#             */
+/*   Updated: 2023/03/30 00:51:27 by marai            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
-void	map_free(t_map	*map)
+void	map_free(t_map *map)
 {
 	t_map	*next_map;
 
-	while(map)
+	while (map)
 	{
 		next_map = map->next;
 		free(map->line);
@@ -18,7 +30,7 @@ void	line_free(t_line **line, ssize_t len)
 	ssize_t	i;
 
 	i = 0;
-	while(i < len)
+	while (i < len)
 	{
 		free(line[i]);
 		i++;
@@ -26,12 +38,12 @@ void	line_free(t_line **line, ssize_t len)
 	free(line);
 }
 
-void	line_free_exit(t_line **line, char	*str)
+void	line_free_exit(t_line **line, char *str)
 {
 	ssize_t	i;
 
 	i = 0;
-	while(line[i])
+	while (line[i])
 	{
 		free(line[i]);
 		i++;

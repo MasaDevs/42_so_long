@@ -6,7 +6,7 @@
 /*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 16:33:55 by marai             #+#    #+#             */
-/*   Updated: 2023/03/30 04:45:25 by marai            ###   ########.fr       */
+/*   Updated: 2023/03/30 00:53:17 by marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static t_map	*init_map(t_map *pre_map, char *map_line)
 
 	map = malloc(sizeof(t_map));
 	if (!map)
-		return NULL;
+		return (NULL);
 	if (pre_map == NULL)
 		map->prev = NULL;
 	else

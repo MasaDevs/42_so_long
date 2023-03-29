@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_check.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: Marai <MasaDevs@gmail.com>                 +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/30 00:52:09 by marai             #+#    #+#             */
+/*   Updated: 2023/03/30 00:56:30 by Marai            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	check_file_name(char *str)
@@ -59,6 +71,7 @@ void	is_rectangle(t_map *map)
 		map = map->next;
 	}
 }
+
 static void	edge_check(t_map *map, t_map *map_head)
 {
 	ssize_t	i;
@@ -90,14 +103,14 @@ void	is_sorrounded(t_map *map)
 	map = map->next;
 	while (map && map->next)
 	{
-		if(!map->line || !ft_strlen(map->line))
-			break;
-		if (!map->line || map->line[0] != '1' || map->line[ft_strlen(map->line)
-			- 1] != '1')
-			{
-				map_free(map_head);
-				err_so_long("map is not sorrounded by 1");
-			}
+		if (!map->line || !ft_strlen(map->line))
+			break ;
+		if (!map->line || map->line[0] != '1'
+			|| map->line[ft_strlen(map->line) - 1] != '1')
+		{
+			map_free(map_head);
+			err_so_long("map is not sorrounded by 1");
+		}
 		map = map->next;
 	}
 	edge_check(map, map_head);

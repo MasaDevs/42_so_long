@@ -6,7 +6,7 @@
 /*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 16:34:45 by marai             #+#    #+#             */
-/*   Updated: 2023/03/30 04:02:07 by marai            ###   ########.fr       */
+/*   Updated: 2023/03/30 00:51:56 by marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	search_start(t_vars *vars)
 		}
 		y++;
 	}
-	if(50 < x || 50 < y)
+	if (50 < x || 50 < y)
 		line_free_exit(vars->line, "map is too big");
 }
 
@@ -82,14 +82,14 @@ void	check_map(t_line **line)
 	}
 }
 
-void calc_size(t_vars *vars)
+void	calc_size(t_vars *vars)
 {
 	ssize_t	i;
 	ssize_t	j;
 
 	i = 0;
 	j = 0;
-	if(!vars->line)
+	if (!vars->line)
 		line_free_exit(vars->line, "map error\n");
 	while (vars->line && vars->line[0][i].value)
 		i++;
@@ -97,5 +97,4 @@ void calc_size(t_vars *vars)
 		j++;
 	vars->map_width = i;
 	vars->map_height = j;
-	
 }

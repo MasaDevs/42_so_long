@@ -6,7 +6,7 @@
 /*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 16:33:44 by marai             #+#    #+#             */
-/*   Updated: 2023/03/30 03:51:11 by marai            ###   ########.fr       */
+/*   Updated: 2023/03/30 00:52:02 by marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	check_paras(t_line **line, char chr, const ssize_t count)
 		y++;
 	}
 	if ((0 < count && nums != count) || (count == 0 && nums <= 0))
-		line_free_exit(line ,"invalid map");
+		line_free_exit(line, "invalid map");
 }
 
 int	escape(t_vars *vars)
