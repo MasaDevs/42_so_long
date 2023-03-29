@@ -6,7 +6,7 @@
 /*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 16:33:30 by marai             #+#    #+#             */
-/*   Updated: 2023/03/30 05:24:27 by marai            ###   ########.fr       */
+/*   Updated: 2023/03/30 05:39:06 by marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	swap_draw(t_vars *vars);
 
 int	update_map(int keycode, t_vars *vars)
 {
-	printf("%d\n", keycode);
 	if (keycode == W_KEY || keycode == W_ALLOW)
 		change_locale(vars, 0, -1);
 	else if (keycode == D_KEY || keycode == D_ALLOW)
@@ -69,7 +68,7 @@ void	draw_pixel(t_vars *vars, ssize_t x, ssize_t y, char *path)
 	img.img = mlx_xpm_file_to_image(vars->mlx, path, &img.img_width,
 			&img.img_height);
 	if (!img.img)
-		err_so_long("image doesn't exist");
+		line_free_exit(vars->line, "cannot load images");
 	mlx_put_image_to_window(vars->mlx, vars->win, img.img, x * SIZE, y * SIZE);
 }
 
