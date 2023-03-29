@@ -6,7 +6,7 @@
 /*   By: Marai <MasaDevs@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 16:33:30 by marai             #+#    #+#             */
-/*   Updated: 2023/03/29 16:50:23 by Marai            ###   ########.fr       */
+/*   Updated: 2023/03/30 00:12:33 by Marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,8 @@ void	check_goal(t_vars *vars, ssize_t x, ssize_t y)
 		{
 			if (vars->line[i][j].value == 'C')
 			{
-				printf("you lose !\n");
-				mlx_destroy_window(vars->mlx, vars->win);
-				exit(0);
+				printf("you don't collect all items !\n");
+				return ;
 			}
 			j++;
 		}
