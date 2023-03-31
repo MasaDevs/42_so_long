@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
+/*   By: Marai <MasaDevs@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 16:33:30 by marai             #+#    #+#             */
-/*   Updated: 2023/03/30 05:39:06 by marai            ###   ########.fr       */
+/*   Updated: 2023/03/31 10:47:38 by Marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	update_map(int keycode, t_vars *vars)
 	return (0);
 }
 
-void	drawing(t_vars *vars)
+int	drawing(t_vars *vars)
 {
 	ssize_t	i;
 	ssize_t	j;
@@ -59,6 +59,7 @@ void	drawing(t_vars *vars)
 		}
 		i++;
 	}
+	return (1);
 }
 
 void	draw_pixel(t_vars *vars, ssize_t x, ssize_t y, char *path)

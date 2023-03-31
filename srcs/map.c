@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
+/*   By: Marai <MasaDevs@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 16:33:55 by marai             #+#    #+#             */
-/*   Updated: 2023/03/30 00:53:17 by marai            ###   ########.fr       */
+/*   Updated: 2023/03/31 10:45:16 by Marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ ssize_t	linelcpy(t_line *dst, char *src, ssize_t len)
 t_line	**make_args(t_map *map)
 {
 	t_line	**line_args;
+	t_map	*map_head;
 	ssize_t	args_len;
 	ssize_t	i;
 
@@ -106,6 +107,7 @@ t_line	**make_args(t_map *map)
 	line_args = malloc(sizeof(t_line *) * (args_len + 1));
 	if (!line_args)
 		err_so_long("malloc error");
+	map_head = map;
 	map = map->next;
 	i = 0;
 	while (i < args_len)
@@ -118,6 +120,6 @@ t_line	**make_args(t_map *map)
 		i++;
 	}
 	line_args[i] = NULL;
-	map_free(map);
+	map_free(map_head);
 	return (line_args);
 }

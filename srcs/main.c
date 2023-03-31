@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
+/*   By: Marai <MasaDevs@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 16:34:36 by marai             #+#    #+#             */
-/*   Updated: 2023/03/30 05:21:00 by marai            ###   ########.fr       */
+/*   Updated: 2023/03/31 10:47:08 by Marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	main(int argc, char *argv[])
 			* SIZE, "so_long");
 	drawing(&vars);
 	mlx_hook(vars.win, 2, 1L << 0, update_map, &vars);
+	mlx_expose_hook(vars.win, drawing, &vars);
 	mlx_hook(vars.win, 17, 1L << 2, escape, &vars);
 	mlx_loop(vars.mlx);
 	line_free(vars.line, vars.map_height);

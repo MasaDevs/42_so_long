@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
+/*   By: Marai <MasaDevs@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 16:33:08 by marai             #+#    #+#             */
-/*   Updated: 2023/03/30 05:26:21 by marai            ###   ########.fr       */
+/*   Updated: 2023/03/31 10:48:01 by Marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <stdlib.h>
 # include <sys/stat.h>
 # include <sys/types.h>
-/* for linux
 # define ESC 65307
 # define D_ALLOW 65363
 # define W_ALLOW 65362
@@ -30,7 +29,7 @@
 # define W_KEY 119
 # define A_KEY 97
 # define D_KEY 100
-*/
+/*
 # define ESC 53
 # define D_ALLOW 124
 # define W_ALLOW 126
@@ -42,6 +41,7 @@
 # define D_KEY 2
 # define EDGE 1
 # define MIDDLE 0
+*/
 # define SIZE 64
 
 //map.c
@@ -54,7 +54,7 @@ void	search(t_line **line, ssize_t x, ssize_t y);
 void	check_map(t_line **line);
 //draw
 int		update_map(int keycode, t_vars *vars);
-void	drawing(t_vars *vars);
+int		drawing(t_vars *vars);
 //err.c
 void	err_so_long(char *str);
 void	is_rectangle(t_map *map);

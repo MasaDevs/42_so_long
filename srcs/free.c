@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marai <masadevs@gmail.com>                 +#+  +:+       +#+        */
+/*   By: Marai <MasaDevs@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 00:51:21 by marai             #+#    #+#             */
-/*   Updated: 2023/03/30 00:51:27 by marai            ###   ########.fr       */
+/*   Updated: 2023/03/31 10:44:06 by Marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	map_free(t_map *map)
 		next_map = map->next;
 		free(map->line);
 		free(map);
-		map = map->next;
+		map = next_map;
 	}
 }
 
