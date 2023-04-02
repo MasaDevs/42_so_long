@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   err.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
+/*   By: Marai <MasaDevs@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 16:33:44 by marai             #+#    #+#             */
-/*   Updated: 2023/04/02 15:00:01 by marai            ###   ########.fr       */
+/*   Updated: 2023/04/02 15:18:01 by Marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void	check_compose(t_line **line)
 			chr = line[y][x].value;
 			if (chr != '0' && chr != '1' && chr != 'E' && chr != 'C'
 				&& chr != 'P')
-				line_free_exit(line, "Error\nmaps must be made by 0, 1, E, P, C");
+				line_free_exit(line,
+					"Error\nmaps must be made by 0, 1, E, P, C");
 			x++;
 		}
 		y++;

@@ -6,7 +6,7 @@
 /*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 16:33:30 by marai             #+#    #+#             */
-/*   Updated: 2023/04/02 15:14:10 by marai            ###   ########.fr       */
+/*   Updated: 2023/04/02 15:16:22 by marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,41 +71,49 @@ void	draw_pixel(t_vars *vars, ssize_t x, ssize_t y, t_image img)
 void	swap_draw(t_vars *vars)
 {
 	draw_pixel(vars, vars->pre_x, vars->pre_y, vars->img_green);
-	draw_pixel(vars, vars->player_x, vars->player_y,
-		vars->img_yellow);
+	draw_pixel(vars, vars->player_x, vars->player_y, vars->img_yellow);
 }
-
 
 void	img_init(t_vars *vars)
 {
-	vars->img_red.img = mlx_xpm_file_to_image(vars->mlx, "./images/square-red-64.xpm", &vars->img_red.img_width, &vars->img_red.img_height);
+	vars->img_red.img = mlx_xpm_file_to_image(vars->mlx,
+			"./images/square-red-64.xpm", &vars->img_red.img_width,
+			&vars->img_red.img_height);
 	if (!vars->img_red.img)
 		line_free_exit(vars->line, "cannot load images");
-	vars->img_green.img = mlx_xpm_file_to_image(vars->mlx, "./images/square-green-64.xpm", &vars->img_green.img_width, &vars->img_green.img_height);
+	vars->img_green.img = mlx_xpm_file_to_image(vars->mlx,
+			"./images/square-green-64.xpm", &vars->img_green.img_width,
+			&vars->img_green.img_height);
 	if (!vars->img_green.img)
 		line_free_exit(vars->line, "cannot load images");
-	vars->img_yellow.img = mlx_xpm_file_to_image(vars->mlx, "./images/square-yellow-64.xpm", &vars->img_yellow.img_width, &vars->img_yellow.img_height);
+	vars->img_yellow.img = mlx_xpm_file_to_image(vars->mlx,
+			"./images/square-yellow-64.xpm", &vars->img_yellow.img_width,
+			&vars->img_yellow.img_height);
 	if (!vars->img_yellow.img)
 		line_free_exit(vars->line, "cannot load images");
-	vars->img_blue.img = mlx_xpm_file_to_image(vars->mlx, "./images/square-blue-64.xpm", &vars->img_blue.img_width, &vars->img_blue.img_height);
+	vars->img_blue.img = mlx_xpm_file_to_image(vars->mlx,
+			"./images/square-blue-64.xpm", &vars->img_blue.img_width,
+			&vars->img_blue.img_height);
 	if (!vars->img_blue.img)
 		line_free_exit(vars->line, "cannot load images");
-	vars->img_pink.img = mlx_xpm_file_to_image(vars->mlx, "./images/square-pink-64.xpm", &vars->img_pink.img_width, &vars->img_pink.img_height);
+	vars->img_pink.img = mlx_xpm_file_to_image(vars->mlx,
+			"./images/square-pink-64.xpm", &vars->img_pink.img_width,
+			&vars->img_pink.img_height);
 	if (!vars->img_pink.img)
 		line_free_exit(vars->line, "cannot load images");
 }
 
 void	image_free(t_vars *vars)
 {
-	if(vars->img_red.img)
+	if (vars->img_red.img)
 		mlx_destroy_image(vars->mlx, vars->img_red.img);
-	if(vars->img_green.img)
+	if (vars->img_green.img)
 		mlx_destroy_image(vars->mlx, vars->img_green.img);
-	if(vars->img_yellow.img)
+	if (vars->img_yellow.img)
 		mlx_destroy_image(vars->mlx, vars->img_yellow.img);
-	if(vars->img_blue.img)
+	if (vars->img_blue.img)
 		mlx_destroy_image(vars->mlx, vars->img_blue.img);
-	if(vars->img_pink.img)
+	if (vars->img_pink.img)
 		mlx_destroy_image(vars->mlx, vars->img_pink.img);
 }
 
