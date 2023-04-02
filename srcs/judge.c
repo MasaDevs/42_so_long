@@ -6,7 +6,7 @@
 /*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 00:51:36 by marai             #+#    #+#             */
-/*   Updated: 2023/04/02 14:37:46 by marai            ###   ########.fr       */
+/*   Updated: 2023/04/02 15:10:26 by marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,13 @@ void	check_goal(t_vars *vars, ssize_t x, ssize_t y)
 		{
 			if (vars->line[i][j].value == 'C')
 			{
-				ft_printf("you don't collect all items !\n");
+				ft_printf("Error\nyou don't collect all items !\n");
 				return ;
 			}
 			j++;
 		}
 		i++;
 	}
-	vars->line[vars->player_y][vars->player_x].value = '0';
-	vars->line[vars->player_y + y][vars->player_x + x].value = 'P';
 	vars->player_x = vars->player_x + x;
 	vars->player_y = vars->player_y + y;
 	image_free(vars);

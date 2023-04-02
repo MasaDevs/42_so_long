@@ -6,7 +6,7 @@
 /*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 16:34:36 by marai             #+#    #+#             */
-/*   Updated: 2023/04/02 14:29:48 by marai            ###   ########.fr       */
+/*   Updated: 2023/04/02 14:59:30 by marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int argc, char *argv[])
 	t_map	*map;
 
 	if (argc != 2)
-		err_so_long("arguments must be 2.");
+		err_so_long("Error\narguments must be 2.");
 	check_file_name(argv[1]);
 	map = open_map(argv[1]);
 	is_rectangle(map);

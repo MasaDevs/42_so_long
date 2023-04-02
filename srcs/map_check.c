@@ -6,7 +6,7 @@
 /*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 00:52:09 by marai             #+#    #+#             */
-/*   Updated: 2023/03/30 05:37:26 by marai            ###   ########.fr       */
+/*   Updated: 2023/04/02 14:58:28 by marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	check_file_name(char *str)
 			return ;
 		str++;
 	}
-	err_so_long("file extension must be '.ber'");
+	err_so_long("Error\nfile extension must be '.ber'");
 }
 
 ssize_t	check_shapes(t_map *map)
@@ -31,7 +31,7 @@ ssize_t	check_shapes(t_map *map)
 	ssize_t	count;
 
 	if (!map)
-		err_so_long("map doesn't exist");
+		err_so_long("Error\nmap doesn't exist");
 	map = map->next;
 	count = 0;
 	while (map)
@@ -53,7 +53,7 @@ void	is_rectangle(t_map *map)
 	if (!map || !map->next || !map->next->line)
 	{
 		map_free(map);
-		err_so_long("map doesn't exist");
+		err_so_long("Error\nmap doesn't exist");
 	}
 	map = map->next;
 	map_len = ft_strlen(map->line);
@@ -66,7 +66,7 @@ void	is_rectangle(t_map *map)
 		if ((map_len != len && flags == 0) || (len != 0 && flags == 1))
 		{
 			map_free(map);
-			err_so_long("this map is not rectangle");
+			err_so_long("Error\nthis map is not rectangle");
 		}
 		map = map->next;
 	}
@@ -82,7 +82,7 @@ static void	edge_check(t_map *map, t_map *map_head)
 		if (map->line[i] != '1')
 		{
 			map_free(map_head);
-			err_so_long("map is not sorrounded by 1");
+			err_so_long("Error\nmap is not sorrounded by 1");
 		}
 		i++;
 	}
@@ -96,7 +96,7 @@ void	is_sorrounded(t_map *map)
 	if (!map || !map->next || !map->next->line)
 	{
 		map_free(map_head);
-		err_so_long("map doesn't exist");
+		err_so_long("Error\nmap doesn't exist");
 	}
 	map = map->next;
 	edge_check(map, map_head);
@@ -109,7 +109,7 @@ void	is_sorrounded(t_map *map)
 			|| map->line[ft_strlen(map->line) - 1] != '1')
 		{
 			map_free(map_head);
-			err_so_long("map is not sorrounded by 1");
+			err_so_long("Error\nmap is not sorrounded by 1");
 		}
 		map = map->next;
 	}

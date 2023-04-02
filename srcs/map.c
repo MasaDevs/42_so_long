@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Marai <MasaDevs@gmail.com>                 +#+  +:+       +#+        */
+/*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 16:33:55 by marai             #+#    #+#             */
-/*   Updated: 2023/04/02 13:59:37 by marai            ###   ########.fr       */
+/*   Updated: 2023/04/02 14:59:03 by marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_map	*open_map(char *map_name)
 
 	fd = open(map_name, O_RDONLY);
 	if (fd == -1)
-		err_so_long("can't open the map");
+		err_so_long("Error\ncan't open the map");
 	map_head = make_map(fd);
 	close(fd);
 	return (map_head);
@@ -52,7 +52,7 @@ static t_map	*make_map(int fd)
 		{
 			close(fd);
 			map_free(map_head);
-			err_so_long("map malloc error\n");
+			err_so_long("Error\nmap malloc error\n");
 		}
 	}
 	return (map_head);
@@ -106,7 +106,7 @@ t_line	**make_args(t_map *map)
 	args_len = check_shapes(map);
 	line_args = malloc(sizeof(t_line *) * (args_len + 1));
 	if (!line_args)
-		err_so_long("malloc error");
+		err_so_long("Error\nmalloc error");
 	map_head = map;
 	map = map->next;
 	i = 0;

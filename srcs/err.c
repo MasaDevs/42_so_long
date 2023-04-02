@@ -6,7 +6,7 @@
 /*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 16:33:44 by marai             #+#    #+#             */
-/*   Updated: 2023/03/30 00:52:02 by marai            ###   ########.fr       */
+/*   Updated: 2023/04/02 15:00:01 by marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	check_compose(t_line **line)
 			chr = line[y][x].value;
 			if (chr != '0' && chr != '1' && chr != 'E' && chr != 'C'
 				&& chr != 'P')
-				line_free_exit(line, "maps must be made by 0, 1, E, P, C");
+				line_free_exit(line, "Error\nmaps must be made by 0, 1, E, P, C");
 			x++;
 		}
 		y++;
@@ -65,7 +65,7 @@ void	check_paras(t_line **line, char chr, const ssize_t count)
 		y++;
 	}
 	if ((0 < count && nums != count) || (count == 0 && nums <= 0))
-		line_free_exit(line, "invalid map");
+		line_free_exit(line, "Error\ninvalid map");
 }
 
 int	escape(t_vars *vars)

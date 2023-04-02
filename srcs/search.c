@@ -6,7 +6,7 @@
 /*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 16:34:45 by marai             #+#    #+#             */
-/*   Updated: 2023/03/30 00:51:56 by marai            ###   ########.fr       */
+/*   Updated: 2023/04/02 14:59:15 by marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	search_start(t_vars *vars)
 		y++;
 	}
 	if (50 < x || 50 < y)
-		line_free_exit(vars->line, "map is too big");
+		line_free_exit(vars->line, "Error\nmap is too big");
 }
 
 void	search(t_line **line, ssize_t x, ssize_t y)
