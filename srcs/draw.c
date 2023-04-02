@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Marai <MasaDevs@gmail.com>                 +#+  +:+       +#+        */
+/*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 16:33:30 by marai             #+#    #+#             */
-/*   Updated: 2023/03/31 10:47:38 by Marai            ###   ########.fr       */
+/*   Updated: 2023/04/02 14:36:10 by marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	draw_pixel(t_vars *vars, ssize_t x, ssize_t y, char *path);
+void	draw_pixel(t_vars *vars, ssize_t x, ssize_t y, t_image img);
 void	swap_draw(t_vars *vars);
 
 int	update_map(int keycode, t_vars *vars)
@@ -27,6 +27,7 @@ int	update_map(int keycode, t_vars *vars)
 		change_locale(vars, 0, 1);
 	else if (keycode == ESC)
 	{
+		image_free(vars);
 		mlx_destroy_window(vars->mlx, vars->win);
 		exit(0);
 	}
@@ -46,15 +47,15 @@ int	drawing(t_vars *vars)
 		while (vars->line[i][j].value)
 		{
 			if (vars->line[i][j].value == 'C')
-				draw_pixel(vars, j, i, "./images/square-blue-64.xpm");
+				draw_pixel(vars, j, i, vars->img_blue);
 			else if (vars->line[i][j].value == 'P')
-				draw_pixel(vars, j, i, "./images/square-yellow-64.xpm");
+				draw_pixel(vars, j, i, vars->img_yellow);
 			else if (vars->line[i][j].value == 'E')
-				draw_pixel(vars, j, i, "./images/square-pink-64.xpm");
+				draw_pixel(vars, j, i, vars->img_pink);
 			else if (vars->line[i][j].value == '0')
-				draw_pixel(vars, j, i, "./images/square-green-64.xpm");
+				draw_pixel(vars, j, i, vars->img_green);
 			else if (vars->line[i][j].value == '1')
-				draw_pixel(vars, j, i, "./images/square-red-64.xpm");
+				draw_pixel(vars, j, i, vars->img_red);
 			j++;
 		}
 		i++;
@@ -62,22 +63,50 @@ int	drawing(t_vars *vars)
 	return (1);
 }
 
-void	draw_pixel(t_vars *vars, ssize_t x, ssize_t y, char *path)
+void	draw_pixel(t_vars *vars, ssize_t x, ssize_t y, t_image img)
 {
-	t_image	img;
-
-	img.img = mlx_xpm_file_to_image(vars->mlx, path, &img.img_width,
-			&img.img_height);
-	if (!img.img)
-		line_free_exit(vars->line, "cannot load images");
 	mlx_put_image_to_window(vars->mlx, vars->win, img.img, x * SIZE, y * SIZE);
 }
 
 void	swap_draw(t_vars *vars)
 {
-	draw_pixel(vars, vars->pre_x, vars->pre_y, "./images/square-green-64.xpm");
+	draw_pixel(vars, vars->pre_x, vars->pre_y, vars->img_green);
 	draw_pixel(vars, vars->player_x, vars->player_y,
-		"./images/square-yellow-64.xpm");
+		vars->img_yellow);
+}
+
+
+void	img_init(t_vars *vars)
+{
+	vars->img_red.img = mlx_xpm_file_to_image(vars->mlx, "./images/square-red-64.xpm", &vars->img_red.img_width, &vars->img_red.img_height);
+	if (!vars->img_red.img)
+		line_free_exit(vars->line, "cannot load images");
+	vars->img_green.img = mlx_xpm_file_to_image(vars->mlx, "./images/square-green-64.xpm", &vars->img_green.img_width, &vars->img_green.img_height);
+	if (!vars->img_green.img)
+		line_free_exit(vars->line, "cannot load images");
+	vars->img_yellow.img = mlx_xpm_file_to_image(vars->mlx, "./images/square-yellow-64.xpm", &vars->img_yellow.img_width, &vars->img_yellow.img_height);
+	if (!vars->img_yellow.img)
+		line_free_exit(vars->line, "cannot load images");
+	vars->img_blue.img = mlx_xpm_file_to_image(vars->mlx, "./images/square-blue-64.xpm", &vars->img_blue.img_width, &vars->img_blue.img_height);
+	if (!vars->img_blue.img)
+		line_free_exit(vars->line, "cannot load images");
+	vars->img_pink.img = mlx_xpm_file_to_image(vars->mlx, "./images/square-pink-64.xpm", &vars->img_pink.img_width, &vars->img_pink.img_height);
+	if (!vars->img_pink.img)
+		line_free_exit(vars->line, "cannot load images");
+}
+
+void	image_free(t_vars *vars)
+{
+	if(vars->img_red.img)
+		mlx_destroy_image(vars->mlx, vars->img_red.img);
+	if(vars->img_green.img)
+		mlx_destroy_image(vars->mlx, vars->img_green.img);
+	if(vars->img_yellow.img)
+		mlx_destroy_image(vars->mlx, vars->img_yellow.img);
+	if(vars->img_blue.img)
+		mlx_destroy_image(vars->mlx, vars->img_blue.img);
+	if(vars->img_pink.img)
+		mlx_destroy_image(vars->mlx, vars->img_pink.img);
 }
 
 /*

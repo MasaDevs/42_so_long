@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Marai <MasaDevs@gmail.com>                 +#+  +:+       +#+        */
+/*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 16:33:08 by marai             #+#    #+#             */
-/*   Updated: 2023/03/31 10:48:01 by Marai            ###   ########.fr       */
+/*   Updated: 2023/04/02 14:29:13 by marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,6 @@ void	change_locale(t_vars *vars, ssize_t x, ssize_t y);
 int		move_or_not(t_vars *vars, ssize_t x, ssize_t y);
 void	check_goal(t_vars *vars, ssize_t x, ssize_t y);
 
+void	image_free(t_vars *vars);
+void	img_init(t_vars *vars);
 #endif

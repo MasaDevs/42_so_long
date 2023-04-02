@@ -6,7 +6,7 @@
 /*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 16:33:17 by marai             #+#    #+#             */
-/*   Updated: 2023/03/30 04:46:34 by marai            ###   ########.fr       */
+/*   Updated: 2023/04/02 14:33:26 by marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,10 @@ struct					s_vars
 	ssize_t				pre_y;
 	ssize_t				player_x;
 	ssize_t				player_y;
+	t_image				img_red;
+	t_image				img_blue;
+	t_image				img_yellow;
+	t_image				img_green;
+	t_image				img_pink;
 };
 #endif

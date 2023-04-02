@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Marai <MasaDevs@gmail.com>                 +#+  +:+       +#+        */
+/*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 16:34:36 by marai             #+#    #+#             */
-/*   Updated: 2023/03/31 10:47:08 by Marai            ###   ########.fr       */
+/*   Updated: 2023/04/02 14:29:48 by marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	main(int argc, char *argv[])
 	vars.mlx = mlx_init();
 	vars.win = mlx_new_window(vars.mlx, vars.map_width * SIZE, vars.map_height
 			* SIZE, "so_long");
+	img_init(&vars);
 	drawing(&vars);
 	mlx_hook(vars.win, 2, 1L << 0, update_map, &vars);
 	mlx_expose_hook(vars.win, drawing, &vars);
